@@ -14,7 +14,7 @@ flameshot = { config = ["~/.config/flameshot/flameshot.ini"] }
 hyprland = { config = ["~/.confg/hypr/hyprland.conf"], aliases = ["hypr"] }
 i3 = { config = ["~/.i3/config", "~/.config/i3/config"] }
 joshuto = { config = ["~/.config/joshuto/joshuto.toml"] }
-kitty = { conifig = ["~/.config/kitty/kitty.conf"] }
+kitty = { config = ["~/.config/kitty/kitty.conf"] }
 nano = { config = ["~/.nanorc"] }
 neofetch = { config = ["~/.config/neofetch/config.conf"] }
 neovim = { config = ["~/.config/nvim/init.lua"], aliases = ["nvim"] }
