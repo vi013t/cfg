@@ -1,0 +1,20 @@
+[package]
+name = "cfg-cli"
+version = "0.1.0"
+description = "A program configuration tool."
+authors = ["Violet"]
+license = "GPL-3.0"
+readme = "README.md"
+repository = "https://github.com/vi013t/cfg"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.23", features = ["derive"] }
+colored = "2.2.0"
+serde = { version = "1.0.216", features = ["derive"] }
+shellexpand = "3.1.0"
+toml = "0.8.19"
+
+[[bin]]
+name = "cfg"
+path = "src/main.rs"

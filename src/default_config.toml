@@ -1,0 +1,31 @@
+[options]
+editor = "$EDITOR"
+
+[programs]
+alacritty = { config = ["$XDG_CONFIG_HOME/alacritty/alacritty.toml", "$XDG_CONFIG_HOME/alacritty.toml", "~/.config/alacritty/alacritty.toml", "~/.alacritty.toml"], aliases = ["alac"] }
+awesome = { config = ["~/.config/awesome/rc.lua"] }
+bash = { config = ["~/.bashrc"] }
+bottom = { config = ["~/.config/bottom/bottom.toml"] }
+browsh = { config = ["~/.config/browsh/config.toml"] }
+cfg = { config = ["~/.config/cfg/cfg.toml"] }
+codium = { config = ["~/.config/VSCodium/User/settings.json"] }
+fish = { config = ["~/.config/fish/config.fish"] }
+flameshot = { config = ["~/.config/flameshot/flameshot.ini"] }
+hyprland = { config = ["~/.confg/hypr/hyprland.conf"], aliases = ["hypr"] }
+i3 = { config = ["~/.i3/config", "~/.config/i3/config"] }
+joshuto = { config = ["~/.config/joshuto/joshuto.toml"] }
+kitty = { conifig = ["~/.config/kitty/kitty.conf"] }
+nano = { config = ["~/.nanorc"] }
+neofetch = { config = ["~/.config/neofetch/config.conf"] }
+neovim = { config = ["~/.config/nvim/init.lua"], aliases = ["nvim"] }
+nixos = { config = ["~/.config/nixos/configuration.nix"], aliases = ["nix"] }
+ohmyposh = { config = ["~/.config/ohmyposh/ohmyposh.toml"], aliases = ["posh"] }
+onedrive = { config = ["~/.config/onedrive/config"] }
+picom = { config = ["~/.config/picom.conf", "~/.config/picom/picom.conf"] }
+ranger = { config = ["~/.config/ranger/rc.conf", "~/.config/ranger/rifle.conf", "~/.config/ranger/scope.sh", "~/.config/ranger/commands.py"] }
+rustfmt = { config = ["~/.config/rustfmt/rustfmt.toml"] }
+stylua = { config = ["~/.config/stylua/stylua.toml"] }
+vim = { config = ["~/.vimrc"] }
+wezterm = { config = ["$WEZTERM_CONFIG_FILE", "$XDG_CONFIG_HOME/wezterm/wezterm.lua", "~/.config/wezterm/wezterm.lua", "~/.wezterm.lua"], aliases = ["wez"] }
+zed = { config = ["~/.config/zed/settings.json"] }
+zsh = { config = ["~/.zshrc"] }
