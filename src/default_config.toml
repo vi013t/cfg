@@ -17,7 +17,7 @@ joshuto = { config = ["~/.config/joshuto/joshuto.toml"] }
 kitty = { config = ["~/.config/kitty/kitty.conf"] }
 nano = { config = ["~/.nanorc"] }
 neofetch = { config = ["~/.config/neofetch/config.conf"] }
-neovim = { config = ["~/.config/nvim/init.lua"], aliases = ["nvim"] }
+neovim = { config = ["~/.config/nvim/init.lua", "~/AppData/Local/nvim/init.lua"], aliases = ["nvim"] }
 nixos = { config = ["~/.config/nixos/configuration.nix"], aliases = ["nix"] }
 ohmyposh = { config = ["~/.config/ohmyposh/ohmyposh.toml"], aliases = ["posh"] }
 onedrive = { config = ["~/.config/onedrive/config"] }

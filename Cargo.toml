@@ -1,6 +1,6 @@
 [package]
 name = "cfg-cli"
-version = "0.1.1"
+version = "0.1.2"
 description = "A program configuration tool."
 authors = ["Violet"]
 license = "GPL-3.0"
@@ -18,3 +18,8 @@ toml = "0.8.19"
 [[bin]]
 name = "cfg"
 path = "src/main.rs"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"

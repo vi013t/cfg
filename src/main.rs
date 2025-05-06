@@ -1,4 +1,4 @@
-use std::{borrow::Cow, collections::HashMap, os::unix::process::CommandExt, path::PathBuf, process::Command, sync::LazyLock};
+use std::{borrow::Cow, collections::HashMap, path::PathBuf, process::Command, sync::LazyLock};
 
 use clap::Parser as _;
 use colored::Colorize;
@@ -62,7 +62,10 @@ fn main() {
             std::process::exit(1);
         });
 
-    Command::new(editor.as_ref()).arg(file.as_ref()).exec();
+    Command::new(editor.as_ref())
+        .arg(file.as_ref())
+        .status()
+        .unwrap();
 }
 
 static CONFIG: LazyLock<Config> = LazyLock::new(|| {
@@ -72,10 +75,14 @@ static CONFIG: LazyLock<Config> = LazyLock::new(|| {
         |_error| {
             let config = include_str!("./default_config.toml");
             std::fs::create_dir_all(shellexpand::tilde("~/.config/cfg").as_ref()).unwrap();
-            std::fs::write(shellexpand::tilde("~/.config/cfg/cfg.toml").as_ref(), &config).unwrap();
+            std::fs::write(
+                shellexpand::tilde("~/.config/cfg/cfg.toml").as_ref(),
+                config,
+            )
+            .unwrap();
             Cow::Borrowed(config)
         },
-        |config| Cow::Owned(config),
+        Cow::Owned,
     );
 
     toml::de::from_str(&toml).unwrap_or_else(|error| {
