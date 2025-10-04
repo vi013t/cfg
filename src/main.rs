@@ -23,6 +23,10 @@ fn main() {
                 .programs
                 .iter()
                 .fold(String::new(), |accumulator, (program_name, program)| {
+                    if which::which(program_name).is_err() {
+                        return accumulator;
+                    }
+
                     let mut result = if accumulator == "" {
                         accumulator
                     } else {

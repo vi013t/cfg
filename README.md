@@ -80,3 +80,5 @@ zsh = { config = ["~/.zshrc"] }
 ```bash
 eval "$(cfg --init-autocomplete)"
 ```
+
+Note that autocomplete will filter out programs that it detects you don't have installed, even if they're in your config.

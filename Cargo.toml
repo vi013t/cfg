@@ -1,6 +1,6 @@
 [package]
 name = "cfg-cli"
-version = "0.1.5"
+version = "0.1.6"
 description = "A program configuration tool."
 authors = ["Violet"]
 license = "GPL-3.0"
@@ -14,6 +14,7 @@ colored = "2.2.0"
 serde = { version = "1.0.216", features = ["derive"] }
 shellexpand = "3.1.0"
 toml = "0.8.19"
+which = "8.0.0"
 
 [[bin]]
 name = "cfg"
