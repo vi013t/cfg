@@ -22,6 +22,7 @@ nixos = { config = ["~/.config/nixos/configuration.nix"], aliases = ["nix"] }
 ohmyposh = { config = ["~/.config/ohmyposh/ohmyposh.toml"], aliases = ["posh"] }
 onedrive = { config = ["~/.config/onedrive/config"] }
 picom = { config = ["~/.config/picom.conf", "~/.config/picom/picom.conf"] }
+pls = { config = ["~/.config/pls/pls.toml" ] }
 ranger = { config = ["~/.config/ranger/rc.conf", "~/.config/ranger/rifle.conf", "~/.config/ranger/scope.sh", "~/.config/ranger/commands.py"] }
 rustfmt = { config = ["~/.config/rustfmt/rustfmt.toml"] }
 stylua = { config = ["~/.config/stylua/stylua.toml"] }

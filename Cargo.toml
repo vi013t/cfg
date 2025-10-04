@@ -1,6 +1,6 @@
 [package]
 name = "cfg-cli"
-version = "0.1.2"
+version = "0.1.3"
 description = "A program configuration tool."
 authors = ["Violet"]
 license = "GPL-3.0"
