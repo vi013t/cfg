@@ -5,14 +5,57 @@ use colored::Colorize;
 
 #[derive(clap::Parser)]
 struct Arguments {
-    program: String,
+    program: Option<String>,
 
     #[arg(long)]
     with: Option<String>,
+
+    #[arg(long)]
+    init_autocomplete: bool,
 }
 
 fn main() {
     let arguments = Arguments::parse();
+
+    if arguments.init_autocomplete {
+        let options =
+            CONFIG
+                .programs
+                .iter()
+                .fold(String::new(), |accumulator, (program_name, program)| {
+                    let mut result = if accumulator == "" {
+                        accumulator
+                    } else {
+                        accumulator + " "
+                    };
+                    result += program_name;
+                    if let Some(aliases) = program.aliases.as_ref() {
+                        result += " ";
+                        result += &aliases.join(" ");
+                    }
+                    result
+                });
+
+        println!(
+            r#"_cfg() {{
+	options="{options}"
+	local cur prev
+	COMPREPLY=()
+	cur="${{COMP_WORDS[COMP_CWORD]}}"
+	COMPREPLY=( $(compgen -W "${{options}}" -- ${{cur}}) )
+	return 0
+}}
+
+complete -o nospace -F _cfg cfg
+		"#
+        );
+        return;
+    }
+
+    let Some(program_to_configure) = arguments.program else {
+        eprintln!("{} No program provided.", "Error:".bold().red());
+        return;
+    };
 
     let editor = arguments
         .with
@@ -24,11 +67,11 @@ fn main() {
         .programs
         .iter()
         .find_map(|(name, program)| {
-            (name == &arguments.program
+            (name == &program_to_configure
                 || program
                     .aliases
                     .as_ref()
-                    .map(|aliases| aliases.contains(&arguments.program))
+                    .map(|aliases| aliases.contains(&program_to_configure))
                     .unwrap_or(false))
             .then(|| {
                 program
@@ -42,7 +85,7 @@ fn main() {
                         eprintln!(
                             "\n{} The program \"{}\" is a known program, but no configuration file exists for it yet. Create either: \n",
                             "Error:".bold().red(),
-                            arguments.program.bold().green()
+                            program_to_configure.bold().green()
                         );
                         for possible_file in &program.config {
                             eprintln!("    * {}", possible_file.bold().green());
@@ -56,7 +99,7 @@ fn main() {
             eprintln!(
                 "\n{} The program \"{}\" is not known. If this isn't a typo, consider adding an entry in {}.\n",
                 "Error:".bold().red(),
-                arguments.program.bold().red().underline(),
+                program_to_configure.bold().red().underline(),
                 "~/.config/cfg/cfg.toml".bold().green()
             );
             std::process::exit(1);
